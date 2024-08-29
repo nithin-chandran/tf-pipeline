@@ -11,6 +11,7 @@ resource "aws_ecr_repository" "repository" {
   encryption_configuration {
     encryption_type = "KMS"
   }
+  force_delete = true  // Added this line so as to delete the repository even if it is not empty, for cleaning purpose
 }
 
 resource "aws_ecr_repository_policy" "policy" {
