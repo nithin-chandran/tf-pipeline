@@ -14,7 +14,7 @@ on:
         required: true
         default: 'main'
 env:
-  gcr_user: ${{ variables.gcruser }}
+  gcr_user: ${{ vars.gcruser }}
 jobs:
   terraform:
     name: 'Terraform action'
