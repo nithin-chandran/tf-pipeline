@@ -13,9 +13,7 @@ on:
 jobs:
   terraform:
     name: 'Terraform action'
-    runs-on:
-      - self-hosted
-      - k8_runners_medium
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout
