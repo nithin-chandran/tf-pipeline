@@ -13,8 +13,6 @@ on:
         description: 'Branch'
         required: true
         default: 'main'
-env:
-  gcr_user: ${{ vars.gcruser }}
 jobs:
   terraform:
     name: 'Terraform action'
@@ -46,10 +44,11 @@ jobs:
 
       - name: Terraform Plan
         if: ${{ github.event.inputs.action == 'plan' }}
-        run: terraform plan -out tf.plan
+        run: terraform plan -var="gcr_user=${{ env.gcr_user }}" -out tf.plan
         working-directory: terraform/projects/${{ github.event.inputs.project }}
+
 
       - name: Terraform Apply
         if: ${{ github.event.inputs.action == 'apply' }}
-        run: terraform apply -auto-approve
+        run: terraform apply -var="gcr_user=${{ env.gcr_user }}" -auto-approve
         working-directory: terraform/projects/${{ github.event.inputs.project }}
