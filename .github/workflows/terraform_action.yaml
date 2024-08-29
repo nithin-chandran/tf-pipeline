@@ -9,7 +9,8 @@ on:
         description: 'Action'
         required: true
         default: 'plan'
-
+env:
+  gcr_user: ${{ variables.gcruser }}
 jobs:
   terraform:
     name: 'Terraform action'
