@@ -14,7 +14,7 @@ on:
         required: true
         default: 'main'
 env:
-  gcr_user: ${{ vars.gcruser }}
+  TF_VAR_gcr_user: ${{ vars.GCRUSER }}
 jobs:
   terraform:
     name: 'Terraform action'
@@ -48,6 +48,7 @@ jobs:
         if: ${{ github.event.inputs.action == 'plan' }}
         run: terraform plan -out tf.plan
         working-directory: terraform/projects/${{ github.event.inputs.project }}
+
 
       - name: Terraform Apply
         if: ${{ github.event.inputs.action == 'apply' }}
