@@ -4,15 +4,15 @@ on:
   workflow_dispatch:
 
 jobs:
-  docker:
+  docker_push:
     runs-on: ubuntu-latest
     steps:
       - name: Login to Amazon ECR
         id: login-ecr
         uses: aws-actions/amazon-ecr-login@v1
         env:
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.ECR_ACCESS_KEY }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.ECR_SECRET_ACCESS_KEY }}
           AWS_REGION: ${{ secrets.AWS_REGION }}
 
       - name: Pull, tag and push
