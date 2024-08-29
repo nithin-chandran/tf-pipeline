@@ -13,6 +13,8 @@ on:
         description: 'Branch'
         required: true
         default: 'main'
+env:
+  gcr_user: ${{ vars.GCRUSER }}
 jobs:
   terraform:
     name: 'Terraform action'
@@ -44,7 +46,7 @@ jobs:
 
       - name: Terraform Plan
         if: ${{ github.event.inputs.action == 'plan' }}
-        run: terraform plan -var="gcr_user=${{ vars.GCRUSER }}" -out tf.plan
+        run: terraform plan -out tf.plan
         working-directory: terraform/projects/${{ github.event.inputs.project }}
 
 
