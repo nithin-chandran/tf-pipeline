@@ -17,6 +17,6 @@ jobs:
 
       - name: Pull, tag and push
         run: |
-          docker pull hello-world
-          docker tag hello-world:latest ${{ steps.login-ecr.outputs.registry }}/pipeline-repo:latest
-          docker push ${{ steps.login-ecr.outputs.registry }}/pipeline-repo:latest
+          docker pull memcached
+          docker tag memcached:latest ${{ steps.login-ecr.outputs.registry }}/pipeline-repo:${{ github.run_id }}
+          docker push ${{ steps.login-ecr.outputs.registry }}/pipeline-repo:${{ github.run_id }}
