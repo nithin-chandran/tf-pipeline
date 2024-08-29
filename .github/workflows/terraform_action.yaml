@@ -9,6 +9,10 @@ on:
         description: 'Action'
         required: true
         default: 'plan'
+      branch:
+        description: 'Branch'
+        required: true
+        default: 'main'
 env:
   gcr_user: ${{ variables.gcruser }}
 jobs:
@@ -20,6 +24,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
+          ref: ${{ github.event.inputs.branch }}
           fetch-depth: 0
 
       - name: Setup Terraform
