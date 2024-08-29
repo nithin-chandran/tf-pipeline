@@ -17,12 +17,13 @@ The projects directory contains Terraform resources that are specific to a proje
 
 The Terraform pipeline is implemented using GitHub Actions. It's designed as a manual workflow trigger with the following options:
 
-Project: Choose the project for which the pipeline should be triggered. Current options are pipeline-1 and pipeline-2.
-Action: Choose the action to be performed on the project. Actions can be plan, apply, or destroy.
-Plan: Displays a plan of the resources to be created/updated/deleted.
-Apply: Applies changes to the resources.
-Destroy: Destroys the created resources.
-Branch: Select the branch on which the action should be performed.
+- Project: Choose the project for which the pipeline should be triggered. Current options are `pipeline-1` and `pipeline-2`.
+- Action: Choose the action to be performed on the project. Actions can be `plan`, `apply`, or `destroy`.
+  - plan: Displays a plan of the resources to be created/updated/deleted.
+  - apply: Applies changes to the resources.
+  - destroy: Destroys the created resources.
+- Branch: Select the branch on which the action should be performed.
+
 All actions are performed only on the selected project.
 
 ## Triggering the Pipeline
