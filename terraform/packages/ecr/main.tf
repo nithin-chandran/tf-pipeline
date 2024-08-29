@@ -28,9 +28,29 @@ resource "aws_ecr_repository_policy" "policy" {
         "ecr:PutImage",
         "ecr:InitiateLayerUpload",
         "ecr:UploadLayerPart",
-        "ecr:CompleteLayerUpload",
-        "ecr:GetAuthorizationToken"
+        "ecr:CompleteLayerUpload"
       ]
+    }
+  ]
+}
+EOF
+}
+
+resource "aws_iam_user_policy" "ecr_auth" {
+  name = "ecr_auth"
+  user = var.principal_user
+
+  policy = <<EOF
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "AllowGetAuthorizationToken",
+      "Effect": "Allow",
+      "Action": [
+        "ecr:GetAuthorizationToken"
+      ],
+      "Resource": "*"
     }
   ]
 }
