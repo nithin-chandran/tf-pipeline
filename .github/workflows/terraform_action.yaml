@@ -44,11 +44,11 @@ jobs:
 
       - name: Terraform Plan
         if: ${{ github.event.inputs.action == 'plan' }}
-        run: terraform plan -var="gcr_user=${{ vars.gcr_user }}" -out tf.plan
+        run: terraform plan -var="gcr_user=${{ vars.GCRUSER }}" -out tf.plan
         working-directory: terraform/projects/${{ github.event.inputs.project }}
 
 
       - name: Terraform Apply
         if: ${{ github.event.inputs.action == 'apply' }}
-        run: terraform apply -var="gcr_user=${{ vars.gcr_user }}" -auto-approve
+        run: terraform apply -var="gcr_user=${{ vars.GCRUSER }}" -auto-approve
         working-directory: terraform/projects/${{ github.event.inputs.project }}
