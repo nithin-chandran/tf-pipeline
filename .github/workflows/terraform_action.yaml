@@ -52,5 +52,5 @@ jobs:
 
       - name: Terraform Apply
         if: ${{ github.event.inputs.action == 'apply' }}
-        run: terraform apply -var="gcr_user=${{ vars.GCRUSER }}" -auto-approve
+        run: terraform apply -auto-approve
         working-directory: terraform/projects/${{ github.event.inputs.project }}
