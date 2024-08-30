@@ -42,3 +42,4 @@ Note: All resources are currently in a destroyed state. Before running the ECR p
 
 1. No policy added for S3 bucket or Access point endpoint.
 2. Pipeline need not trigger automatically on push or pull request as we need to run the pipeline separately.
+3. Terraform state is maintained in an already created S3 bucket.
